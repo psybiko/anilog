@@ -1,5 +1,4 @@
 import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
 import Axios from "axios";
 
@@ -14,22 +13,22 @@ function App() {
     console.log(res.data.message);
   });
 
+  const test = () => {
+    Axios({
+      method: "GET",
+      url: "https://kitsu.io/api/edge/anime?filter[categories]=adventure",
+      headers: {
+        Accept: "application/vnd.api+json",
+        "Content-Type": "application/vnd.api+json"
+      }
+    }).then(res => {
+      console.log(res);
+    });
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <button onClick={test}>Click here</button>
     </div>
   );
 }
